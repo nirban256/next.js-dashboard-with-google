@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Google OAuth Protected Dashboard with Next.js & NextAuth.js
 
-## Getting Started
+### Author: Nirban Chakraborty
 
-First, run the development server:
+## 🧾 Overview
+
+This project is a secure dashboard application built using **Next.js App Router**, **NextAuth.js**, and **Tailwind CSS**. It implements Google OAuth authentication, protecting specific routes like `/dashboard` to ensure that only authenticated users can access them.
+
+The app includes:
+- Google-based user authentication
+- Middleware for route protection
+- A loading spinner styled with Tailwind CSS
+- Support for mobile responsiveness
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
 
 ```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Configure Environment Variables
+Create a .env.local file in the root of the project and add the following:
+
+```
+GOOGLE_ID=your-google-client-id
+GOOGLE_SECRET=your-google-client-secret
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=http://localhost:3000
+```
+> **Note:** Make sure to never commit your `.env.local` file to version control.
+
+You can generate a secure NEXTAUTH_SECRET using:
+```
+openssl rand -base64 32
+```
+> **Note:** On windows use bash terminal or WSL (if present)
+
+
+### 4. Run the Development Server
+```
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000 to get started.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Route Protection
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Routes under /dashboard are protected using middleware. Unauthorized users will be redirected to the sign-in page.
 
-## Learn More
+## 💡 Assumptions & Challenges
 
-To learn more about Next.js, take a look at the following resources:
+- Assumes that users will authenticate only via Google OAuth.
+- Challenges:
+   - One of the main challenges was protecting certain pages so that only logged-in users could access them. It is done using middleware and checking user sessions through cookies.
+   - Setting up authentication with NextAuth using the new App Router in Next.js also required special attention to how routes and settings were organized.
+   - Another challenge was adding features to sort and filter data on the dashboard in a clear and useful way.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Third-Party Libraries Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Beyond next, next-auth, and tailwindcss, the following were used:
 
-## Deploy on Vercel
+- Lucide-react (optional): For icons in UI components
+- dotenv: For managing environment variables (built-in support with Next.js)
+- OpenSSL (CLI): For generating secure secrets (local use only)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Testing
+Visit /dashboard without signing in — you will be redirected to /.
+Once signed in with Google, you'll have access to the dashboard.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+
+```
+/app
+  /api/auth/[...nextauth] – API route for authentication
+  /dashboard – Protected page
+/lib/authOptions.ts – Centralized NextAuth config
+/middleware.ts – Route protection logic
+.env.local – Environment variables (not committed)
+```
+
+<p align="center">Thank you for checking out my work. Have a nice day! </p>
