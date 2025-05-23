@@ -12,7 +12,7 @@ type PizzaOrder = {
 
 export const mockOrders: PizzaOrder[] = [
     {
-        id: "PZA001",
+        id: "PZA002",
         customer: "Nirban Chakraborty",
         type: "BBQ Chicken",
         quantity: 1,
@@ -20,7 +20,7 @@ export const mockOrders: PizzaOrder[] = [
         status: "Delivered",
     },
     {
-        id: "PZA002",
+        id: "PZA001",
         customer: "Sumi De",
         type: "Pepperoni",
         quantity: 2,
@@ -40,7 +40,7 @@ export const mockOrders: PizzaOrder[] = [
         customer: "Jagat Sharma",
         type: "Veggie Supreme",
         quantity: 1,
-        date: "2025-05-22 15:00",
+        date: "2025-05-22 15:20",
         status: "Out for Delivery",
     },
     {
@@ -48,12 +48,12 @@ export const mockOrders: PizzaOrder[] = [
         customer: "Tushar Kanti Patra",
         type: "Veggie Supreme",
         quantity: 1,
-        date: "2025-05-22 15:00",
+        date: "2025-05-22 15:50",
         status: "Cancelled",
     },
     {
         id: "PZA006",
-        customer: "Saurabh Das",
+        customer: "Suraj Dey",
         type: "Farmhouse",
         quantity: 2,
         date: "2025-05-23 11:20",
