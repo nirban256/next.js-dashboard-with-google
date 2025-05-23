@@ -2,6 +2,6 @@
 // It uses the getServerSession function from NextAuth and the authOptions defined in the authentication route. 
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/app/api/auth/[...nextauth]/route";
+import { authOptions } from "./authOptions";
 
 export const getAuthSession = () => getServerSession(authOptions);
